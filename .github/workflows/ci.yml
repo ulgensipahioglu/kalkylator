@@ -1,0 +1,30 @@
+name: CI - Kör tester
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tester:
+    name: Kör enhetstester
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Sätt upp Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installera beroenden
+        run: pip install -r requirements.txt
+
+      - name: Kör testerna
+        run: pytest tester/ -v --tb=short
+
+      - name: Visa kodtäckning
+        run: pytest tester/ --cov=kalkylator --cov-report=term-missing
