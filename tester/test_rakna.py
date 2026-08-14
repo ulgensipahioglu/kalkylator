@@ -1,5 +1,5 @@
 import pytest
-from kalkylator.rakna import addera, subtrahera, multiplicera, dividera
+from kalkylator.rakna import addera, subtrahera, multiplicera, dividera, upphoja
 
 
 class TestAddera:
@@ -36,3 +36,14 @@ class TestDividera:
     def test_division_med_noll(self):
         with pytest.raises(ValueError):
             dividera(5, 0)
+            
+
+class TestUpphoja:
+    def test_enkelt(self):
+        assert upphoja(2, 3) == 8
+
+    def test_noll_exponent(self):
+        assert upphoja(5, 0) == 1
+
+    def test_negativ_exponent(self):
+        assert upphoja(2, -1) == 0.5
