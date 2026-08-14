@@ -3,6 +3,7 @@ from kalkylator.rakna import addera, subtrahera, multiplicera, dividera, upphoja
 
 
 class TestAddera:
+
     def test_positiva_tal(self):
         assert addera(2, 3) == 5
 
@@ -14,6 +15,7 @@ class TestAddera:
 
 
 class TestSubtrahera:
+
     def test_enkelt(self):
         assert subtrahera(10, 3) == 7
 
@@ -22,6 +24,7 @@ class TestSubtrahera:
 
 
 class TestMultiplicera:
+
     def test_enkelt(self):
         assert multiplicera(4, 5) == 20
 
@@ -30,15 +33,17 @@ class TestMultiplicera:
 
 
 class TestDividera:
+
     def test_enkelt(self):
         assert dividera(10, 2) == 5.0
 
     def test_division_med_noll(self):
         with pytest.raises(ValueError):
             dividera(5, 0)
-            
+
 
 class TestUpphoja:
+
     def test_enkelt(self):
         assert upphoja(2, 3) == 8
 

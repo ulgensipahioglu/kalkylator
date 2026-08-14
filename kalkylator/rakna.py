@@ -15,14 +15,13 @@ def multiplicera(a, b):
 
 def dividera(a, b):
     """Returnerar kvoten av a och b.
-    
     Kastar ValueError om b är noll.
     """
     if b == 0:
         raise ValueError("Det går inte att dela med noll.")
     return a / b
-    
+
 
 def upphoja(bas, exponent):
-    """Returnerar bas upphöjt till exponent."""
-    return bas ** exponent
+    """Returnerar bas upphojt till exponent."""
+    return bas**exponent
