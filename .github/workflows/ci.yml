@@ -7,24 +7,32 @@ on:
     branches: [ main ]
 
 jobs:
+  linting:
+    name: Kontrollera kodstil
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install flake8
+      - name: Kör flake8
+        run: flake8 kalkylator/ tester/ --max-line-length=100
+
   tester:
     name: Kör enhetstester
+    needs: linting
     runs-on: ubuntu-latest
-
     steps:
       - name: Hämta koden
         uses: actions/checkout@v4
-
       - name: Sätt upp Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Installera beroenden
         run: pip install -r requirements.txt
-
       - name: Kör testerna
         run: pytest tester/ -v --tb=short
-
       - name: Visa kodtäckning
         run: pytest tester/ --cov=kalkylator --cov-report=term-missing
