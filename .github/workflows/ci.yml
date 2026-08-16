@@ -36,3 +36,7 @@ jobs:
         run: pytest tester/ -v --tb=short
       - name: Visa kodtäckning
         run: pytest tester/ --cov=kalkylator --cov-report=term-missing
+      - name: Installera och kör cowsay
+        run: |
+          sudo apt-get update && sudo apt-get install -y cowsay
+          /usr/games/cowsay "ALL TESTS PASSED!"
