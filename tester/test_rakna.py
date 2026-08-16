@@ -1,5 +1,5 @@
 import pytest
-from kalkylator.rakna import addera, subtrahera, multiplicera, dividera, upphoja
+from kalkylator.rakna import addera, subtrahera, multiplicera, dividera, upphoja, modulo
 
 
 class TestAddera:
@@ -52,3 +52,16 @@ class TestUpphoja:
 
     def test_negativ_exponent(self):
         assert upphoja(2, -1) == 0.5
+
+
+class TestModulo:
+
+    def test_enkelt(self):
+        assert modulo(10, 3) == 1
+
+    def test_jamn_delning(self):
+        assert modulo(10, 2) == 0
+
+    def test_modulo_med_noll(self):
+        with pytest.raises(ValueError):
+            modulo(10, 0)
