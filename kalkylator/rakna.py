@@ -25,3 +25,10 @@ def dividera(a, b):
 def upphoja(bas, exponent):
     """Returnerar bas upphojt till exponent."""
     return bas**exponent
+
+
+def modulo(a, b):
+    """Returnerar resten vid heltalsdivision"""
+    if b == 0:
+        raise ValueError("Det gar inte att dela med noll.")
+    return a % b
